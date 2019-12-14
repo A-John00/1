@@ -13,7 +13,7 @@ public:
     double getValue(int row, int column);
     int getNumRows();
     int getNumColumns();
-    void print();
+    void printM();
 
 private:
     int rows; // number rows

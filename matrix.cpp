@@ -24,7 +24,7 @@ matrix::matrix(int r, int c, bool rdm){
 
 }
 
-void matrix::print(){
+void matrix::printM(){
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < columns; j++){
             cout << this->values.at(i).at(j) << "\t\t";
@@ -41,9 +41,16 @@ int matrix::getNumColumns(){
     return columns;
 }
 
+void matrix::setValue(int row, int column, double value){
+    this->values.at(row).at(column) = value;
+}
+
+double matrix::getValue(int row, int column){
+    return this->values.at(row).at(column);
+}
 
 double matrix::genRdm(){
-    static random_device rd;
+    static random_device rd; // static required for different doubles
     static mt19937 eng(rd());
     uniform_real_distribution<> distr(0, 1);
 

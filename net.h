@@ -5,10 +5,7 @@
 class Net
 {
 public:
-    Net();
 
 };
 
 #endif // NET_H
-
-

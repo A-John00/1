@@ -18,7 +18,7 @@ SOURCES += \
         layer.cpp \
         main.cpp \
         matrix.cpp \
-        net.cpp \
+        network.cpp \
         neuron.cpp
 
 # Default rules for deployment.
@@ -29,5 +29,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     layer.h \
     matrix.h \
-    net.h \
+    network.h \
     neuron.h
