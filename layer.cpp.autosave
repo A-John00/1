@@ -15,6 +15,9 @@ void layer::setVal(int i, double v){
     this->neurons.at(i)->setValue(v);
 }
 
+
+
+// creates a new layer *l1
 layer layer::activationSoft(){
     layer *l1 = new layer(size);
     double fullNSum = 0.00;  // placeholder for sum

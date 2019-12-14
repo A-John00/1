@@ -23,7 +23,6 @@ public:
     */
     Neuron(double val);
     void activationSigm(); // Sigmoid activation Fct
-    void activationSoft();
     void setValue(double val); // sets the value of a Neuron and activates it
     double getValue(); // gets the Neurons Value
     double getActValue(); // gets the activated Neurons Value

@@ -3,6 +3,7 @@
 #include "layer.h"
 #include "matrix.h"
 #include "network.h"
+#include "math.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +17,7 @@ int main(int argc, char *argv[])
     matrix *m = new matrix(3, 2, true);
     m->print();
     */
+    /*
     vector<int> topology;
     topology.push_back(3);
     topology.push_back(2);
@@ -29,6 +31,18 @@ int main(int argc, char *argv[])
     network *nn = new network(topology);
     nn->setInput(input);
     nn->printNN();
+    */
+
+
+
+    layer *l = new layer(4);
+    l->setVal(0, 1.2);
+    l->setVal(1, 0.8);
+    l->setVal(2, 2.0);
+    l->setVal(3, 0.4);
+    l->activationSoft().printLayer();
+
+
 
     return 0;
 }

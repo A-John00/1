@@ -30,6 +30,8 @@ double Neuron::getDerivedSoftVal(){
 void Neuron::activationSigm(){
     actValue = (1 / (1 + pow(exp(1.0), -value)));
 }
+
+
 /*
 double Neuron::Softmax(double x){
     return(pow(exp(1.0), x) / )
