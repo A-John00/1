@@ -9,9 +9,15 @@ class layer
 {
 public:
     layer(int size);
+
+
     layer activationSoft();
+
+
     void setVal(int i, double v);
     void printLayer();
+
+
     matrix *mfyV();
     matrix *mfyAV();
 

@@ -5,31 +5,46 @@
 
 using namespace std;
 
-Neuron::Neuron(double val){
+// (1a)
+
+Neuron::Neuron(double val, string fct){
     value = val;
-    activationSigm();
+    if(fct == "Sigmoid"){
+        activationSigm();
+    }
 }
 
+// (1a)
+
+void Neuron::activationSigm(){
+    actValue = (1 / (1 + pow(exp(1.0), -value)));
+}
+
+
+
+
+// sets a single neurons non activated value
 void Neuron::setValue(double val){
     value = val;
     activationSigm();
 }
 
+
+
+
 double Neuron::getValue(){
-    return this->value;
+    return value;
 }
 
 double Neuron::getActValue(){
-    return this->actValue;
+    return actValue;
 }
 
 double Neuron::getDerivedSoftVal(){
-    return this->derivedSoftVal;
+    return derivedSoftVal;
 }
 
-void Neuron::activationSigm(){
-    actValue = (1 / (1 + pow(exp(1.0), -value)));
-}
+
 
 
 /*

@@ -8,12 +8,13 @@ class matrix
 {
 public:
     matrix(int r, int c, bool rdm);
-    double genRdm();
+    static double genRdm();
     void setValue(int row, int column, double value);
     double getValue(int row, int column);
     int getNumRows();
     int getNumColumns();
     void printM();
+    static matrix mult(matrix *a, matrix *b);
 
 private:
     int rows; // number rows

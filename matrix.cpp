@@ -14,11 +14,11 @@ matrix::matrix(int r, int c, bool rdm){
         for (int j = 0; j < columns; j++){
             double r = 0.00;
             if(rdm){
-                r = this->genRdm();
+                r = matrix::genRdm();
             }
             colValues.push_back(r);
         }
-        this->values.push_back(colValues);
+        values.push_back(colValues);
     }
 
 
@@ -27,7 +27,7 @@ matrix::matrix(int r, int c, bool rdm){
 void matrix::printM(){
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < columns; j++){
-            cout << this->values.at(i).at(j) << "\t\t";
+            cout << values.at(i).at(j) << "\t\t";
         }
         cout << endl;
     }
@@ -42,11 +42,11 @@ int matrix::getNumColumns(){
 }
 
 void matrix::setValue(int row, int column, double value){
-    this->values.at(row).at(column) = value;
+    values.at(row).at(column) = value;
 }
 
 double matrix::getValue(int row, int column){
-    return this->values.at(row).at(column);
+    return values.at(row).at(column);
 }
 
 double matrix::genRdm(){
@@ -55,4 +55,23 @@ double matrix::genRdm(){
     uniform_real_distribution<> distr(0, 1);
 
     return distr(eng);
+}
+
+matrix matrix::mult(matrix *a, matrix *b){
+    if(a->getNumColumns() != b->getNumRows()){
+        cout << "Matrix multiplikation kann nicht durchgeführt werden." << endl;
+
+    }
+    matrix* c = new matrix(a->getNumRows(), b->getNumColumns(), false);
+
+    for(int i = 0; i < a->getNumRows(); i++){
+        for(int j = 0; j < b->getNumColumns(); j++){
+            for(int k = 0; k < b->getNumRows(); k++){
+                double tempVal1 = a->getValue(i, k) * b->getValue(k, j);
+                double tempVal2 = c->getValue(i, j) + tempVal1;
+                c->setValue(i, j, tempVal2);
+            }
+        }
+    }
+    return *c;
 }
