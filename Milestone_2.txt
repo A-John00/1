@@ -1,0 +1,26 @@
+(1a)
+- Es sind die Aktivierungsfunktion sigmoid und tanh auswählbar, indem beim konstruktor des Neurons der string "Sigmoid" oder "tanh" angegeben wird.
+(1b)
+- Die Aktivierungsfunktion Softmax befindet sich in den layer Dateien, da diese nur mit Vektoren / Layern in dieser Implementation funktioniert.
+(nicht impementiert als funktionierende Aktivierungsfunktion für die Neuronen
+(1c)
+- Die Berbindung zwischen Layern und Neuronen befindet sich im Konstruktor von layer, in dem in die jeweiligen layer, deren Größe anhand der Topologie bestimmt wird,
+die jweilige Anzahl an Neuronen hinzugefügt wird
+- Die Gewichte werden in Form einer Matrix im Konstruktor des Networks erzeugt für die jeweiligen layer
+(1d)
+- eine Futnkion für die Berechnung der Gradienten befindet sich in der Funktion backPropagation in network.cpp
+(1e)
+- getWeightMatrix(int i) befindet sich in network.cpp, wobei i für das jeweilige layer hat
+
+
+
+- network::printNN() gibt das komplette network das erstellt wurde aus
+
+
+
+(2a)
+- Der Konstruktor networt nimmt einen Vektor Topologie, in dem die größe der Layer angegeben werden
+(2b)
+- network::printOutput() gibt NUR das Output Layer des Netzes aus
+(2c)
+- network::feedforward()  berechnet für eine Eingabe das Neuronale  Netz

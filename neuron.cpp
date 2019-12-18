@@ -11,6 +11,11 @@ Neuron::Neuron(double val, string fct){
     value = val;
     if(fct == "Sigmoid"){
         activationSigm();
+        activationSigmDer();
+    }
+    if(fct == "tanh"){
+        activationTanh();
+        activationTanhDer();
     }
 }
 
@@ -19,6 +24,19 @@ Neuron::Neuron(double val, string fct){
 void Neuron::activationSigm(){
     actValue = (1 / (1 + pow(exp(1.0), -value)));
 }
+
+void Neuron::activationSigmDer(){
+    derVal = (1 / (1 + pow(exp(1.0), -value))) * (1 - (1 / (1 + pow(exp(1.0), -value))));
+}
+
+void Neuron::activationTanh(){
+    actValue = tanh(value);
+}
+
+void Neuron::activationTanhDer(){
+    derVal = (sinh(value) / cosh(value));
+}
+
 
 
 
@@ -42,6 +60,10 @@ double Neuron::getActValue(){
 
 double Neuron::getDerivedSoftVal(){
     return derivedSoftVal;
+}
+
+double Neuron::getDerVal(){
+    return derVal;
 }
 
 

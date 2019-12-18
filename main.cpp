@@ -56,18 +56,21 @@ int main(int argc, char *argv[])
     input.push_back(1);
     input.push_back(0);
     input.push_back(1);
-    input.push_back(1);
     vector<int> topology;
-    topology.push_back(4);
-    topology.push_back(2);
+    topology.push_back(3);
+    topology.push_back(3);
     topology.push_back(3);
 
     network* nn = new network(topology);
     nn->setInput(input);
+    nn->setTargetValues(input);
     nn->feedForward();
+    nn->setNetworkError();
     nn->printNN();
     cout << "======" << endl;
-    nn->printOutput();
+    cout << nn->getCurrentError() << endl;
+    cout << "=======" << endl;
+    nn->backPropagation();
 
     return 0;
 }

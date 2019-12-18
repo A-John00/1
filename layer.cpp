@@ -8,16 +8,12 @@
 layer::layer(int size){
     this->size = size;
     for(int i = 0; i < size; i++){
-        Neuron *n = new Neuron(0.00, "sigmoid");
+        Neuron *n = new Neuron(0.00, "Sigmoid");
         neurons.push_back(n);
     }
 }
 
-void layer::setVal(int i, double v){
-    neurons.at(i)->setValue(v);
-}
-
-
+//=====================================
 
 // (1b)
 // creates a new layer *l1 and fills it with the values
@@ -34,6 +30,11 @@ layer layer::activationSoft(){
     return *l1;
 }
 
+//=====================================
+
+void layer::setVal(int i, double v){
+    neurons.at(i)->setValue(v);
+}
 
 
 void layer::printLayer(){
@@ -42,7 +43,12 @@ void layer::printLayer(){
     }
 }
 
-// borrowed
+
+vector<Neuron *> layer::getNeurons(){
+    return neurons;
+}
+
+
 matrix *layer::mfyV(){
     matrix* m = new matrix(1, neurons.size(), false);
     for (int i = 0; i < neurons.size(); i++){
@@ -52,7 +58,7 @@ matrix *layer::mfyV(){
     return m;
 }
 
-// borrowed
+
 matrix *layer::mfyAV(){
     matrix* m = new matrix(1, neurons.size(), false);
     for (int i = 0; i < neurons.size(); i++){
@@ -61,6 +67,23 @@ matrix *layer::mfyAV(){
 
     return m;
 }
+
+matrix *layer::mfyDV(){
+    matrix* m = new matrix(1, neurons.size(), false);
+    for (int i = 0; i < neurons.size(); i++){
+        m->setValue(0, i, neurons.at(i)->getDerVal());
+    }
+
+    return m;
+}
+
+
+
+
+
+
+
+
 
 
 

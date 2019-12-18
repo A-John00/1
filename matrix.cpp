@@ -24,30 +24,6 @@ matrix::matrix(int r, int c, bool rdm){
 
 }
 
-void matrix::printM(){
-    for (int i = 0; i < rows; i++){
-        for (int j = 0; j < columns; j++){
-            cout << values.at(i).at(j) << "\t\t";
-        }
-        cout << endl;
-    }
-}
-
-int matrix::getNumRows(){
-    return rows;
-}
-
-int matrix::getNumColumns(){
-    return columns;
-}
-
-void matrix::setValue(int row, int column, double value){
-    values.at(row).at(column) = value;
-}
-
-double matrix::getValue(int row, int column){
-    return values.at(row).at(column);
-}
 
 double matrix::genRdm(){
     static random_device rd; // static required for different doubles
@@ -57,7 +33,8 @@ double matrix::genRdm(){
     return distr(eng);
 }
 
-matrix matrix::mult(matrix *a, matrix *b){
+
+matrix* matrix::mult(matrix* a, matrix* b){
     if(a->getNumColumns() != b->getNumRows()){
         cout << "Matrix multiplikation kann nicht durchgeführt werden." << endl;
 
@@ -73,5 +50,50 @@ matrix matrix::mult(matrix *a, matrix *b){
             }
         }
     }
-    return *c;
+    return c;
 }
+
+
+matrix* matrix::transpose(){
+    matrix* m = new matrix(columns, rows, false);
+
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < columns; j ++){
+            m->setValue(j, i, getValue(i, j));
+
+        }
+    }
+    return m;
+}
+
+
+double matrix::getValue(int row, int column){
+    return values.at(row).at(column);
+}
+
+int matrix::getNumRows(){
+    return rows;
+}
+
+
+int matrix::getNumColumns(){
+    return columns;
+}
+
+
+void matrix::setValue(int row, int column, double value){
+    values.at(row).at(column) = value;
+}
+
+void matrix::printM(){
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < columns; j++){
+            cout << values.at(i).at(j) << "\t\t";
+        }
+        cout << endl;
+    }
+}
+
+
+
+
